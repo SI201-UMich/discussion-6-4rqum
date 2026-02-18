@@ -57,7 +57,23 @@ class HorseRaces:
             inner keys are (str) races, inner values are (int) race times
             EXAMPLE: {'Special Week': {'Tenno Sho Fall': 16.5, 'Tenno Sho Spring': 16.3, 'Teio Sho': 17.0}}
         '''
-        pass
+        
+        #table is a list of lists, where each inner list is a row in the CSV
+        #the first row is the header, which contains the names of the races
+        #the first column of each subsequent row contains the name of the horse
+        #the remaining columns contain the race times for each horse    
+        nested_dict = {}
+        header = table[0]
+        for row in table[1:]:
+            horse_name = row[0]
+            value_1 = float(row[1])
+            value_2 = float(row[2])
+            value_3 = float(row[3])
+            nested_dict[horse_name] = {header[1]: value_1, 
+                                       header[2]: value_2, 
+                                       header[3]: value_3}
+            
+        return nested_dict
 
 ###############################################################################
 ##### TASK 2
